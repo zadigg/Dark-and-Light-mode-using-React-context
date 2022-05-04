@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { useStateContext } from "./context/ThemeContext";
 
 function App() {
+  const { darkMode, toggleDarkMode } = useStateContext();
+  const handleClick = () => {
+    toggleDarkMode();
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className={`h-screen flex items-center justify-center ${
+        darkMode ? "bg-slate-900   text-slate-400" : "bg-gray-200"
+      }`}
+    >
+      <div>
+        <button onClick={handleClick}>{darkMode ? "dark" : "light"}</button>
+      </div>
     </div>
   );
 }
